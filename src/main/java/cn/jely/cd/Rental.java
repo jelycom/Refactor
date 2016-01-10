@@ -4,7 +4,7 @@ package cn.jely.cd;
  * Created by Administrator on 2016/1/10.
  */
 public class Rental {
-    private Movie _movie;
+    Movie _movie;
     private int _daysRented;
 
     public Rental(Movie _movie, int _daysRented) {
@@ -26,29 +26,6 @@ public class Rental {
 
     public void setDaysRented(int _daysRented) {
         this._daysRented = _daysRented;
-    }
-
-    double getCharge() {
-        double result =0;
-        switch (getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                result +=2;
-                if (getDaysRented() > 2) {
-                    result+=(getDaysRented()-2)*1.5;
-                }
-                break;
-
-            case Movie.NEW_RELEASE:
-                    result+= getDaysRented()*3;
-                break;
-            case Movie.CHILDRENS:
-                result += 1.5;
-                if (getDaysRented() > 3) {
-                    result+=(getDaysRented()-3)*1.5;
-                }
-                break;
-        }
-        return result;
     }
 
     int getFrequentRenterPoints() {
