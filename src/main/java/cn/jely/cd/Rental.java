@@ -4,7 +4,7 @@ package cn.jely.cd;
  * Created by Administrator on 2016/1/10.
  */
 public class Rental {
-    Movie _movie;
+    private Movie _movie;
     private int _daysRented;
 
     public Rental(Movie _movie, int _daysRented) {

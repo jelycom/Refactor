@@ -30,7 +30,7 @@ public class Customer {
         Enumeration elements = rentals.elements();
         while (elements.hasMoreElements()) {
             Rental each = (Rental) elements.nextElement();
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each._movie.getCharge(each.getDaysRented())) + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "\n";
         }
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
         result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent reter points";
@@ -42,7 +42,7 @@ public class Customer {
         int frequentRenterPoints =0;
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            frequentRenterPoints += each._movie.getFrequentRenterPoints(each.getDaysRented());
+            frequentRenterPoints += each.getMovie().priceType.getFrequentRenterPoints(each.getDaysRented());
         }
         return frequentRenterPoints;
     }
@@ -52,7 +52,7 @@ public class Customer {
         Enumeration elements = rentals.elements();
         while (elements.hasMoreElements()) {
             Rental each = (Rental) elements.nextElement();
-            result += each._movie.getCharge(each.getDaysRented());
+            result += each.getMovie().getCharge(each.getDaysRented());
         }
         return result;
     }
