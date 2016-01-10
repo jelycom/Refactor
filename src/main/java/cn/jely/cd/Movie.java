@@ -48,4 +48,7 @@ public class Movie {
         return priceType.getCharge(daysRented);
     }
 
+    public int getFrequentRenterPoints(int daysRented) {
+        return priceType.getFrequentRenterPoints(daysRented);
+    }
 }
