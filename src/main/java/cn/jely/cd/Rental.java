@@ -28,7 +28,7 @@ public class Rental {
         this._daysRented = _daysRented;
     }
 
-    double amountFor() {
+    double getCharge() {
         double result =0;
         switch (getMovie().getPriceCode()) {
             case Movie.REGULAR:
