@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.jely.cd</groupId>
+    <artifactId>Refactor</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>AppFuse Core Application</name>
+    <url>http://www.mycompany.com</url>
+
+    <prerequisites>
+        <maven>2.0.6</maven>
+    </prerequisites>
+    <properties>
+        <!-- Application settings -->
+        <dao.framework>hibernate</dao.framework>
+        <amp.genericCore>true</amp.genericCore>
+        <amp.fullSource>false</amp.fullSource>
+
+        <!-- Framework dependency versions -->
+        <appfuse.version>2.0-SNAPSHOT</appfuse.version>
+        <spring.version>2.0.6</spring.version>
+
+        <!-- Testing dependency versions -->
+        <jmock.version>1.1.0</jmock.version>
+        <junit.version>4.4</junit.version>
+        <wiser.version>1.2</wiser.version>
+
+        <!-- Database settings -->
+        <dbunit.dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory</dbunit.dataTypeFactoryName>
+        <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
+        <hibernate.dialect>org.hibernate.dialect.MySQLInnoDBDialect</hibernate.dialect>
+        <jdbc.groupId>mysql</jdbc.groupId>
+        <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
+        <jdbc.version>5.0.5</jdbc.version>
+        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+        <jdbc.url><![CDATA[jdbc:mysql://localhost/Refactor?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
+        <jdbc.username>root</jdbc.username>
+        <jdbc.password></jdbc.password>
+    </properties>
+    <licenses>
+        <license>
+            <name></name>
+            <url></url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection></connection>
+        <developerConnection></developerConnection>
+        <url></url>
+    </scm>
+
+    <issueManagement>
+        <system></system>
+        <url></url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id></id>
+            <name></name>
+            <email></email>
+            <timezone></timezone>
+        </developer>
+    </developers>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>central</id>-->
+            <!--<url>http://repo1.maven.org/maven2</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>appfuse</id>-->
+            <!--<url>http://static.appfuse.org/repository</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>appfuse</id>-->
+            <!--<url>http://static.appfuse.org/repository</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.appfuse</groupId>
+            <artifactId>appfuse-service</artifactId>
+            <version>${appfuse.version}</version>
+            <!-- This exclusion and the dependency following this one allow DAO framework switching. -->
+            <!-- You only need these if you want to use JPA or iBATIS. See APF-565 for more information. -->
+            <!-- It does no harm to leave it in for Hibernate, but it's not needed. -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.appfuse</groupId>
+                    <artifactId>appfuse-hibernate</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.appfuse</groupId>
+            <artifactId>appfuse-${dao.framework}</artifactId>
+            <version>${appfuse.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${jdbc.groupId}</groupId>
+            <artifactId>${jdbc.artifactId}</artifactId>
+            <version>${jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jmock</groupId>
+            <artifactId>jmock</artifactId>
+            <version>${jmock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-mock</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.subethamail</groupId>
+            <artifactId>subethasmtp-wiser</artifactId>
+            <version>${wiser.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
