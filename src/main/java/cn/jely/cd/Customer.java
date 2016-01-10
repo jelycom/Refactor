@@ -42,7 +42,7 @@ public class Customer {
         int frequentRenterPoints =0;
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            frequentRenterPoints += each.getFrequentRenterPoints();
+            frequentRenterPoints += each._movie.getFrequentRenterPoints(each.getDaysRented());
         }
         return frequentRenterPoints;
     }
